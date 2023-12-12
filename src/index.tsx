@@ -1,11 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.scss';
-import { App } from './App';
+import ReactDOM from 'react-dom/client';
+import { HashRouter as Router } from 'react-router-dom';
+import App from './App';
+import { CartFavoritesProvider } from './providers/CartFavoritesProvider';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root'),
+const rootElement = document.getElementById('root') as HTMLElement;
+
+const root = (ReactDOM as any).createRoot(rootElement);
+
+root.render(
+  <Router>
+    <CartFavoritesProvider>
+      <App />
+    </CartFavoritesProvider>
+  </Router>,
 );
